@@ -37,6 +37,8 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",
 )
 log = logging.getLogger("workana-bot")
+# Telegram API URLs contain the bot token.
+logging.getLogger("httpx").setLevel(logging.WARNING)
 
 
 def _escape_md(text: str) -> str:

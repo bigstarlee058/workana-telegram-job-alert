@@ -36,6 +36,8 @@ Workana has **no public API**, so this bot reads the same public listing page yo
 
 ## Ubuntu VPS
 
+For a repeatable deployment with a dedicated service account, persistent state, and live checks, use the [VPS deployment guide](deploy/README.md).
+
 Do **not** copy the Windows `.venv` folder to the server. Upload the project (git clone, `scp`, etc.) and create a fresh venv on Linux.
 
 1. **Packages**

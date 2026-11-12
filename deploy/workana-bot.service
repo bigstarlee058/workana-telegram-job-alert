@@ -1,0 +1,31 @@
+[Unit]
+Description=Workana Telegram job alerts
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=workana-bot
+Group=workana-bot
+WorkingDirectory=/opt/workana-bot/current
+EnvironmentFile=/etc/workana-bot.env
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PLAYWRIGHT_BROWSERS_PATH=/opt/workana-bot/browsers
+ExecStart=/opt/workana-bot/current/.venv/bin/python /opt/workana-bot/current/bot.py
+Restart=on-failure
+RestartSec=15
+TimeoutStopSec=30
+StateDirectory=workana-bot
+StateDirectoryMode=0750
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+RestrictSUIDSGID=true
+
+[Install]
+WantedBy=multi-user.target
